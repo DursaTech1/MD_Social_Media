@@ -35,6 +35,10 @@ def signup(request):
         if not username.isalnum():
             messages.error(request, "Username must be Alpha-Numaric!")
             return redirect('signup')
+        
+        if len(username)>10:
+            messages.error(request, "username must be under 10 characters")
+            
             
         # Create user
         myuser = User.objects.create_user(username, email, pass1)
